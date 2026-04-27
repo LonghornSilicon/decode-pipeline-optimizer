@@ -117,11 +117,11 @@ if __name__ == "__main__":
     print_budget_table(context_len=2048)
 
     print("\n--- Dual-Model Budget (draft + main, Step 1 compression) ---")
-    dual_model_budget("Custom draft 100M", "GPT-2 medium (345M)", 2048, bits=4)
-    dual_model_budget("Llama-68M", "Llama-7B", 2048, bits=4)
-    dual_model_budget("GPT-2 small (117M)", "GPT-2 medium (345M)", 2048, bits=4)
+    dual_model_budget("Custom draft 100M", "GPT-2 medium (345M)", 2048, compression_bits=4)
+    dual_model_budget("Llama-68M", "Llama-7B", 2048, compression_bits=4)
+    dual_model_budget("GPT-2 small (117M)", "GPT-2 medium (345M)", 2048, compression_bits=4)
 
     print("\n--- Without Step 1 (16-bit, to show why Steps 1+5 are coupled) ---")
-    dual_model_budget("Custom draft 100M", "GPT-2 medium (345M)", 2048, bits=16)
+    dual_model_budget("Custom draft 100M", "GPT-2 medium (345M)", 2048, compression_bits=16)
 
     plot_budget_vs_context()

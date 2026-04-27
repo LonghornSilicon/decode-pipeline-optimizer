@@ -27,15 +27,15 @@ def print_speedup_table():
     alphas = [0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90]
     gammas = [2, 3, 4, 6, 8]
 
-    header = f"{'α \\ γ':>8}" + "".join(f"{g:>8}" for g in gammas)
+    header = f"{'a \\ g':>8}" + "".join(f"{g:>8}" for g in gammas)
     print(header)
     print("-" * (8 + 8 * len(gammas)))
     for a in alphas:
         row = f"{a:>8.2f}" + "".join(f"{speedup(a, g):>8.2f}" for g in gammas)
         print(row)
 
-    print("\nTarget: α ≥ 0.70, γ ≥ 4 → speedup ≥ 2.14×  (proves the 2× floor)")
-    print("Best case: α = 0.85, γ = 8 → speedup = 4.24×  (proves the 4× ceiling)")
+    print("\nTarget: a >= 0.70, g >= 4 -> speedup >= 2.14x  (proves the 2x floor)")
+    print("Best case: a = 0.85, g = 8 -> speedup = 4.24x  (proves the 4x ceiling)")
 
 
 def plot_speedup_surface():
@@ -87,20 +87,20 @@ def hades_operating_point():
     Literature values for common draft/target pairs.
     """
     pairs = [
-        ("GPT-2 small → GPT-2 medium", 0.72, 4),
-        ("GPT-2 small → GPT-2 large", 0.65, 4),
-        ("Llama-68M → Llama-7B", 0.78, 5),
-        ("Llama-160M → Llama-13B", 0.74, 5),
-        ("Custom 100M distilled → 7B", 0.82, 6),
+        ("GPT-2 small -> GPT-2 medium", 0.72, 4),
+        ("GPT-2 small -> GPT-2 large", 0.65, 4),
+        ("Llama-68M -> Llama-7B", 0.78, 5),
+        ("Llama-160M -> Llama-13B", 0.74, 5),
+        ("Custom 100M distilled -> 7B", 0.82, 6),
     ]
 
     print("\n--- HADES Operating Point Estimates ---")
-    print(f"{'Model Pair':<45} {'α':>6} {'γ':>4} {'Speedup':>9}")
+    print(f"{'Model Pair':<45} {'a':>6} {'g':>4} {'Speedup':>9}")
     print("-" * 68)
     for name, alpha, gamma in pairs:
         s = speedup(alpha, gamma)
-        flag = " ← HADES target" if s >= 2.0 else ""
-        print(f"{name:<45} {alpha:>6.2f} {gamma:>4} {s:>9.2f}×{flag}")
+        flag = " <- HADES target" if s >= 2.0 else ""
+        print(f"{name:<45} {alpha:>6.2f} {gamma:>4} {s:>9.2f}x{flag}")
 
 
 if __name__ == "__main__":
