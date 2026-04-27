@@ -2,6 +2,10 @@
 
 **HADES Step 5 | Optional v1, Target v2**
 
+> **All simulation results are in [`paper/hades_step5.pdf`](paper/hades_step5.pdf).**
+> Cycle-accurate proof: **2.22–8.63× throughput** over autoregressive baseline (67/72 configs ≥2×, peak 2,875 tok/s).
+> Full methodology, 8 figures, and extended 72-configuration sweep included.
+
 ## What It Is
 
 The Decode Pipeline Optimizer implements speculative decoding at the hardware level. Instead of generating one token at a time (sequential, memory-bandwidth-bound), a small draft model runs in parallel guessing the next N tokens. The main model then verifies all guesses in a single batched pass — effectively yielding **2–4× throughput** when the draft model's accuracy is high.
